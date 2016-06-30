@@ -50,7 +50,7 @@ public class Step2_Captcha {
 			conn.setRequestProperty("Accept-Language", "zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4");
 			conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Win64; x64; Trident/4.0; .NET CLR 2.0.50727; SLCC2; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; InfoPath.3)");
 			conn.setRequestProperty("Accept-Encoding","gzip, deflate, sdch");
-			conn.setRequestProperty("Host", "gz.122.gov.cn");
+			conn.setRequestProperty("Host", p.get("Province")+".122.gov.cn");
 			conn.setRequestProperty("Connection", "Keep-Alive");
 			conn.setRequestProperty("Cache-Control", "max-age=0");
 			conn.setRequestProperty("Upgrade-Insecure-Requests", "1");

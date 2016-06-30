@@ -17,7 +17,7 @@ public class Run {
 				+ "{\"Province\":\"gz\",\"Username\":\"532128197509180518\", \"Password\":\"Pppp0000\"}"
 				+ "]";
 		List<Map<String,Object>> accounts=new ObjectMapper().readValue(json, List.class);
-		Map<String,Object> account=accounts.get(1);
+		Map<String,Object> account=accounts.get(0);
 		
 		Map map=new HashMap<String,Object>();
 		map.put("Province", account.get("Province"));

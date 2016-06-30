@@ -145,4 +145,8 @@ public class HttpRequestUtils
 		}
 		return result;
 	}
+	
+	public static void main(String[] args){
+		sendPost("http://localhost:8081","mm=12345");
+	}
 }

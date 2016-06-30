@@ -45,7 +45,7 @@ public class Step1_Home {
 			conn.setRequestProperty("Accept-Language", "zh-CN");
 			conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Win64; x64; Trident/4.0; .NET CLR 2.0.50727; SLCC2; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; InfoPath.3)");
 			conn.setRequestProperty("Accept-Encoding","gzip, deflate");
-			conn.setRequestProperty("Host", "gz.122.gov.cn");
+			conn.setRequestProperty("Host", p.get("Province")+".122.gov.cn");
 			conn.setRequestProperty("Connection", "Keep-Alive");
 
 			//建立实际的连接

@@ -1,4 +1,4 @@
-package http;
+package query;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,9 +20,9 @@ import javax.net.ssl.X509TrustManager;
 
 import utils.ProxyRequestUtils;
 
-public class Step3_Login {
+public class Tfhd {
 	
-	public static Map<String,Object> login(Map<String,Object> p)
+	public static Map<String,Object> get(Map<String,Object> p)
 	{
 		Map<String,Object> r=new HashMap<String,Object>();
 		HttpsURLConnection conn=null;
@@ -31,22 +31,16 @@ public class Step3_Login {
 		BufferedReader in = null;
 		try
 		{
-			String urlName = "https://"+p.get("Province")+".122.gov.cn/user/m/login";
+			String urlName = "http://"+p.get("Province")+".122.gov.cn/m/mvehxh/getTfhdList";
 			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 			System.out.println("Request--->"+urlName);
 			URL realUrl = new URL(urlName);
 			//打开和URL之间的连接
 			conn = (HttpsURLConnection)realUrl.openConnection(ProxyRequestUtils.proxy);
-			
-			//设置安全属性
-			SSLContext sc = SSLContext.getInstance("SSL");
-			sc.init(null, new TrustManager[] { new TrustAnyTrustManager() }, new java.security.SecureRandom());
-			conn.setSSLSocketFactory(sc.getSocketFactory());
-			conn.setHostnameVerifier(new TrustAnyHostnameVerifier());
 
 			//设置通用的请求属性，请设置好请求时延  ！!!务必处理请求超时！！！
 			conn.setReadTimeout(5000);
-			conn.setRequestProperty("Accept", "application/x-ms-application, image/jpeg, application/xaml+xml, image/gif, image/pjpeg, application/x-ms-xbap, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, */*");
+			conn.setRequestProperty("Accept", "application/json, text/javascript, */*; q=0.01");
 			conn.setRequestProperty("Referer","http://"+p.get("Province")+".122.gov.cn/m/login");
 			conn.setRequestProperty("Accept-Language", "zh-CN");
 			conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Win64; x64; Trident/4.0; .NET CLR 2.0.50727; SLCC2; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; InfoPath.3)");
@@ -126,23 +120,5 @@ public class Step3_Login {
 			}
 		}
 		return r;
-	}
-	
-	private static class TrustAnyTrustManager implements X509TrustManager {
-		public void checkClientTrusted(X509Certificate[] chain, String authType)
-				throws CertificateException {
-		}
-		public void checkServerTrusted(X509Certificate[] chain, String authType)
-				throws CertificateException {
-		}
-		public X509Certificate[] getAcceptedIssuers() {
-			return new X509Certificate[] {};
-		}
-	}
-
-	private static class TrustAnyHostnameVerifier implements HostnameVerifier {
-		public boolean verify(String hostname, SSLSession session) {
-			return true;
-		}
 	}
 }
